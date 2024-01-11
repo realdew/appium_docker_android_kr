@@ -23,7 +23,7 @@ Orignated from: https://github.com/appium/appium-docker-android/tree/master
 ## Build
 
 ```
-docker build -t realdew/appium_public:0.1 -f docker/appium_public/Dockerfile docker/appium_public
+docker build -t realdew/appium_docker_android_kr:0.1 -f ./Dockerfile .
 ```
 
 ## Usage
@@ -53,7 +53,7 @@ lee@lee-T303UA:~
 #### 3.1. 특정 디바이스에만 연결
 `--device` 옵션을 사용하여 특정 디바이스에 대해서만 appium을 연결할 수 있습니다.
 ```
-docker run -d -p 4723:4723 --device /dev/bus/usb/003/003:/dev/bus/usb/003/003 -v ~/.android:/root/.android -v ~/appium_log:/var/log/ --name appium_003 realdew/appium_public:0.1
+docker run -d -p 4723:4723 --device /dev/bus/usb/003/003:/dev/bus/usb/003/003 -v ~/.android:/root/.android -v ~/appium_log:/var/log/ --name appium_003 appium_docker_android_kr:0.1
 ```
 이 경우, appium 서버는 `/dev/bus/usb/003/003`에 연결된 디바이스에 대해서만 작동합니다.
 
@@ -61,7 +61,7 @@ docker run -d -p 4723:4723 --device /dev/bus/usb/003/003:/dev/bus/usb/003/003 -v
 #### 3.2. 특정 USB 버스에 접속된 모든 디바이스에 연결
 특정 USB Bus에 접속된 모든 디바이스에 대해서 appium을 연결하려면 다음과 같이 할 수 있습니다.
 ```
-docker run --privileged -d -p 4723:4723 -v /dev/bus/usb/003:/dev/bus/usb/003 -v ~/.android:/home/androidusr/.android -v ~/appium_log:/var/log/ --name appium-container realdew/appium_public:0.1
+docker run --privileged -d -p 4723:4723 -v /dev/bus/usb/003:/dev/bus/usb/003 -v ~/.android:/home/androidusr/.android -v ~/appium_log:/var/log/ --name appium-container appium_docker_android_kr:0.1
 
 docker exec -it appium-container bash
 ```
@@ -70,7 +70,7 @@ docker exec -it appium-container bash
 #### 3.3. 모든 USB 버스에 접속된 모드 디바이스에 연결
 USB에 접속된 모든 디바이스에 대하여 appium을 연결합니다.
 ```
-docker run --privileged -d -p 4723:4723 -v /dev/bus/usb:/dev/bus/usb -v ~/.android:/home/androidusr/.android -v ~/appium_log:/var/log/ --name appium-container realdew/appium_public:0.1
+docker run --privileged -d -p 4723:4723 -v /dev/bus/usb:/dev/bus/usb -v ~/.android:/home/androidusr/.android -v ~/appium_log:/var/log/ --name appium-container appium_docker_android_kr:0.1
 ```
 이 경우, appium 서버는 `/dev/bus/usb`에 접속된 모든 디바이스에 대하여 작동될 수 있습니다.
 
