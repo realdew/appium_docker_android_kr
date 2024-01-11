@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+
+  appium:
+    container_name: appium_whole_usb
+    restart: always
+    image: realdew/appium_docker_android_kr:0.1
+    privileged: true
+    ports:
+      - 4723:4723/tcp
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - ~/.android:/home/androidusr/.android
+      - ~/appium_log:/var/log/
+    environment:
+      - TZ=Asia/Seoul
